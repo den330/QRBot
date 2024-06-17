@@ -35,13 +35,9 @@ const rest = new REST().setToken(process.env.DISC_TOKEN);
 
     console.log(`client id: ${process.env.CLIENT_ID}`);
 
-    const data = await rest.put(
-      Routes.applicationGuildCommands(
-        process.env.CLIENT_ID,
-        process.env.SERVER_ID
-      ),
-      { body: commands }
-    );
+    const data = await rest.put(Routes.applicationCommands(clientId), {
+      body: commands,
+    });
 
     console.log(
       `Successfully reloaded ${data.length} application (/) commands.`
