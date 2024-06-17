@@ -33,11 +33,12 @@ const rest = new REST().setToken(process.env.DISC_TOKEN);
       `Started refreshing ${commands.length} application (/) commands.`
     );
 
-    console.log(`client id: ${process.env.CLIENT_ID}`);
-
-    const data = await rest.put(Routes.applicationCommands(clientId), {
-      body: commands,
-    });
+    const data = await rest.put(
+      Routes.applicationCommands(process.env.CLIENT_ID),
+      {
+        body: commands,
+      }
+    );
 
     console.log(
       `Successfully reloaded ${data.length} application (/) commands.`
